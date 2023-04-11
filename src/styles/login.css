@@ -1,3 +1,14 @@
+#login-page {
+    background-image: url("img/cool-background.png");
+    background-size:cover;
+    background-position: center center;
+}
 .form_container {
     height: 100vh;
+    width: 500px;
+}
+.login-banner img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
