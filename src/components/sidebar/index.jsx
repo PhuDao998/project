@@ -37,13 +37,13 @@ export default function Sidebar() {
             <LibraryAddCheckIcon className='!fill-[#0ea5e9] !text-[20px]'/>
         </li>
         <li className="sidebar_item active px-[32px]">
-          <Link to={'/'} onClick={handleRidirect} className='flex item-center w-full py-[18px]'>
-            {/* <a href="/sibar" className='flex item-center w-full py-[18px]'> */}
+          <Link to={'/'} onClick={handleRidirect} >
+            <div className='flex item-center w-full py-[18px]'>
               <span className='menu-title inline-block mr-auto'>
                 Dashboard
               </span>
               <HomeIcon />
-            {/* </a> */}
+              </div>
           </Link>
         </li>
         <li className="sidebar_item">
@@ -56,27 +56,21 @@ export default function Sidebar() {
           </div>
           <ul className="list_sidebar__subItem">
             <li className="sidebar_subItem__link px-[32px]">
-              <Link to="dashboard1" onClick={handleRidirect} className='block py-3'>
-                {/* <a href="/" className='block py-3'> */}
+              <Link to="dashboard1" onClick={handleRidirect} className='block py-3 flex items-center'>
                   <ArrowRightAltIcon className='mr-3'/>
                   <span>Button</span>
-                {/* </a> */}
               </Link>
             </li>
             <li className="sidebar_subItem__link px-[32px]">
-              <Link to={'dashboard2'} onClick={handleRidirect}  className='block py-3'>
-                {/* <a className='block py-3'> */}
+              <Link to={'dashboard2'} onClick={handleRidirect}  className='block py-3 flex items-center'>
                   <ArrowRightAltIcon className='mr-3'/>
                   <span>Dropdowns</span>
-                {/* </a> */}
               </Link>
             </li>
             <li className="sidebar_subItem__link px-[32px]">
-              <Link to={'dashboard3'} onClick={handleRidirect} className='block py-3'>
-                {/* <a href="/" className='block py-3'> */}
+              <Link to={'dashboard3'} onClick={handleRidirect} className='block py-3 flex items-center'>
                   <ArrowRightAltIcon className='mr-3'/>
                   <span>Typography</span>
-                {/* </a> */}
               </Link>
             </li>
           </ul>
@@ -91,31 +85,26 @@ export default function Sidebar() {
           </div>
           <ul className="list_sidebar__subItem">
             <li className="sidebar_subItem__link px-[32px]">
-              <Link to="dashboard1" onClick={handleRidirect} className='block py-3'>
-                {/* <a href="/" className='block py-3'> */}
+              <Link to="dashboard1" onClick={handleRidirect} className='block py-3 flex items-center'>
                   <ArrowRightAltIcon className='mr-3'/>
                   <span>Button</span>
-                {/* </a> */}
               </Link>
             </li>
             <li className="sidebar_subItem__link px-[32px]">
-              <Link to={'dashboard2'} onClick={handleRidirect} className='block py-3'>
-                {/* <a className='block py-3'> */}
+              <Link to={'dashboard2'} onClick={handleRidirect}  className='block py-3 flex items-center'>
                   <ArrowRightAltIcon className='mr-3'/>
                   <span>Dropdowns</span>
-                {/* </a> */}
               </Link>
             </li>
             <li className="sidebar_subItem__link px-[32px]">
-              <Link to={'dashboard3'} onClick={handleRidirect} className='block py-3'>
-                {/* <a href="/" className='block py-3'> */}
+              <Link to={'dashboard3'} onClick={handleRidirect} className='block py-3 flex items-center'>
                   <ArrowRightAltIcon className='mr-3'/>
                   <span>Typography</span>
-                {/* </a> */}
               </Link>
             </li>
           </ul>
         </li>
+        
       </ul>
     </div>
   );

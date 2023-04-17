@@ -10,7 +10,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import Cookies from 'universal-cookie';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function NavbarConponent() {
     const cookies = new Cookies();
@@ -40,11 +40,11 @@ export default function NavbarConponent() {
                 <div className="toggle_icon cursor-pointer" onClick={handleShowSideBar}>
                     <MenuOutlinedIcon className='!fill-[#a1a1aa] ' />
                 </div>
-                <div className="nav_search  rounded-2xl overflow-hidden flex">
-                    <div className='px-2 border-r-[1px]'>
+                <div className="nav_search rounded-2xl overflow-hidden flex items-center">
+                    <div className='px-2 pt-1  '>
                         <SearchIcon className="font-light !fill-[#a1a1aa] !w-[17px] !h-[17px] cursor-pointer" />
                     </div>
-                    <input type="text" placeholder='Search project ...' className="nav_search__input text-[14px] px-2 min-w-[300px]" />
+                    <input type="text" placeholder='Search project ...' className="nav_search__input text-[14px] px-2 min-w-[300px] border-none" />
                 </div>
                 <div className="left_nav__container ml-auto flex items-center gap-5">
                     <div className="user_info flex gap-3 items-center">
@@ -52,19 +52,19 @@ export default function NavbarConponent() {
                             <img className='h-[32px] w-[32px] rounded-full ' src="https://themewagon.github.io/purple-react/static/media/face1.42d41e61.jpg" alt="avatar_user" />
                         </div>
                         <div className="user_more__action cursor-pointer relative">
-                            <div className="name" onClick={handleShowMoreInfo}>
+                            <div className="name flex items-center" onClick={handleShowMoreInfo}>
                                 Phu Dao_Van
                                 <KeyboardArrowDownIcon className='!h-[18px] !fill-[#4c1d95]' />
                             </div>
-                            <div className="more_infor_container absolute top-[48px] right-0 w-[160px] bg-white rounded-sm shadow-md">
-                                <div className="sign_out px-[13px] py-[11px] hover:bg-gray-100">
+                            <div className="more_infor_container absolute top-[45px] right-0 w-[160px] bg-white rounded-sm shadow-md">
+                                <div className="sign_out px-[13px] py-[13px] hover:bg-gray-100 flex items-center">
                                     <AutorenewIcon className='!fill-[#22d3ee] !text-[17px] mr-2' />
                                     Active Account
                                 </div>
-                                <div className="sign_out px-[13px] py-[11px] hover:bg-gray-100" onClick={handleSignOut}>
+                                <Link to={'login'} className="sign_out px-[13px] py-[13px] hover:bg-gray-100 flex items-center" onClick={handleSignOut}>
                                     <LogoutIcon className='!fill-[#b66dff] !text-[17px] mr-2' />
                                     Sign out
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
