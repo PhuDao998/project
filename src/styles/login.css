@@ -1,14 +1,25 @@
 #login-page {
     background-image: url("img/cool-background.png");
-    background-size:cover;
+    background-size: cover;
     background-position: center center;
 }
-.form_container {
-    height: 100vh;
+
+.login-content-container {
+    margin: auto;
+    height: 80vh;
     width: 500px;
 }
-.login-banner img{
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
+
+.login-content {
+    text-align: center;
+    min-height: 120px;
+    line-height: 120px;
+    margin-top: 300px;
+}
+
+.login-footer {
+    height: 18vh;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(125, 188, 234);
 }

@@ -5,7 +5,7 @@ export default function Admin() {
     console.log("appDomain", appDomain);
     return (
         <div>
-            Home page
+            Admin page
         </div>
     );
 }

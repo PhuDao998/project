@@ -10,11 +10,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-function About() {
-    return <h2>About Us</h2>;
-}
-
-function Contact() {
-    return <h2>Contact Us</h2>;
-}
