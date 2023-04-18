@@ -5,7 +5,7 @@
 }
 
 .form_field__input {
-    @apply h-[42px] w-full p-3 rounded-md border-solid border-[1px] border-gray-300 mt-2 font-[500] text-gray-400 text-[16px]
+    @apply h-[42px] w-full relative p-3 rounded-md border-solid border-[1px] border-gray-300 mt-2 font-[500] text-gray-400 text-[16px]
 }
 
 .form_field__input:focus {
@@ -15,11 +15,17 @@
 .form_field__input::placeholder {
     color: #ccc;
     font-weight: 600;
-    letter-spacing: .5px;
+    letter-spacing: .3px;
+    opacity: 0.8;
 }
-
+.form_field__item:not(.no_required)>label::before{
+   position: absolute;
+   content: "*";
+   color: #9b0000;
+    right: -7px;
+}
 .form_field__item>label {
-    @apply font-[600]
+    @apply font-[600] relative
 }
 
 .warning_input {

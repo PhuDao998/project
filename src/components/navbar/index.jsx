@@ -31,8 +31,8 @@ export default function NavbarConponent() {
     };
 
     return (
-        <nav className='nav_container p-3  h-[70px] flex items-center sticky top-0 z-[1000] bg-white'>
-            <div className="logo_nav">
+        <nav className='nav_container pl-2 pr-3  h-[70px] flex items-center sticky top-0 z-[1000] bg-white'>
+            <div className="logo_nav flex items-center">
                 <img className='large_logo w-[140px] m-auto h-[28px]' src="https://themewagon.github.io/purple-react/static/media/logo.a76c464b.svg" alt="logo" />
                 <img className='small_logo w-[20px] m-auto h-[28px]' src="https://themewagon.github.io/purple-react/static/media/logo-mini.d16823d3.svg" alt="logo" />
             </div>

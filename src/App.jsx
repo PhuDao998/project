@@ -12,6 +12,7 @@ import Dashboard from './components/Dashboard';
 import Dashboard1 from './components/Dashboard1';
 import Dashboard2 from './components/Dashboard2';
 import Dashboard3 from './components/Dashboard3';
+import CreateAcount from './page/create';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path='dashboard3' element={<Dashboard3 />} />
           </Route>
           <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<CreateAcount />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
