@@ -6,17 +6,17 @@ import '../../styles/navbar.css';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
-import LoginIcon from '@mui/icons-material/Login';
+// import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
-import Cookies from 'universal-cookie';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/Authenticate';
 
 export default function NavbarConponent() {
-    const cookies = new Cookies();
     const navigate = useNavigate();
-    const handleSignOut = () => {
-        cookies.remove('refreshToken');
+    const { currentUser, logout } = useAuth();
+    const handleSignOut = async () => {
+        await logout();
         navigate("/login");
     };
     const handleShowSideBar = (e) => {

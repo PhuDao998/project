@@ -1,29 +1,36 @@
 .login_container {
-    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/authentication/background.jpg') ;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./img/background.jpg');
     background-size: cover;
     background-position: center;
 }
+
 .form_field__input {
     @apply h-[42px] w-full p-3 rounded-md border-solid border-[1px] border-gray-300 mt-2 font-[500] text-gray-400 text-[16px]
 }
+
 .form_field__input:focus {
     @apply border-blue-600
 }
+
 .form_field__input::placeholder {
     color: #ccc;
     font-weight: 600;
     letter-spacing: .5px;
 }
-.form_field__item>label{
+
+.form_field__item>label {
     @apply font-[600]
 }
+
 .warning_input {
     @apply text-red-700 px-2 mt-1 block
 }
+
 .help_text_input {
     @apply px-2 text-yellow-600 mt-1 block
 }
-.loading_icon_svg svg{
+
+.loading_icon_svg svg {
     width: 50px;
     height: 42px;
     background: transparent !important;
