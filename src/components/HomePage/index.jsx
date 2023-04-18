@@ -10,10 +10,10 @@ export default function HomePage() {
     console.log("currentUser",currentUser)
     return (
         <div className="home_container">
+            {currentUser ? null : <Navigate to="/login" replace={true} />}
             <Navbar />
             <Sidebar />
             <Outlet />
-            {currentUser ? null : <Navigate to="/login" replace={true} />}
         </div>
     );
 }

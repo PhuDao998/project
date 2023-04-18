@@ -2,14 +2,14 @@
 import '../../styles/login.css';
 import React, { useState } from 'react';
 
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { useAuth } from "../../contexts/Authenticate";
 import LoadingIcon from '../../helper/Loading_icon';
 
 
 export default function Login() {
     const navigate = useNavigate();
-    const { login } = useAuth();
+    const { login, currentUser } = useAuth();
     const [formInfo, setFormInfo] = useState({
         email: {
             value: '',
@@ -104,6 +104,7 @@ export default function Login() {
 
     return (
         <div className="login_container w-screen h-screen flex items-center justify-center">
+            {currentUser ? <Navigate to="/" replace={true} /> : null}
             <form className="login_form w-[450px] text-[14px] rounded-lg bg-white p-8 flex flex-col justify-between">
                 <div className="text-center text-2xl font-bold">
                     Sign in to your account

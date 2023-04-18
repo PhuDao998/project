@@ -9,8 +9,9 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const cookies = new Cookies();
+    const HEADER_AUTHORIZATION_PREFIX = "Airpot";
     const [currentUser, setCurrentUser] = useState();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const serverUrl = process.env.REACT_APP_SERVER_DOMAIN;
 
     async function signup(email, password) {
@@ -71,14 +72,37 @@ export function AuthProvider({ children }) {
     // }
 
     useEffect(() => {
-        console.log(' verify user')
+        async function verifyUser() {
+            if (!currentUser) {
+                const accessToken = cookies.get('accessToken');
+                const refreshToken = cookies.get('refreshToken');
+                if (refreshToken) {
+                    let headersReq = { 'refreshToken': `${HEADER_AUTHORIZATION_PREFIX} ${refreshToken}` };
+                    if (accessToken) {
+                        headersReq.accessToken = `${HEADER_AUTHORIZATION_PREFIX} ${accessToken}`;
+                    }
+                    console.log("headersReq", headersReq);
+                    let req = await fetch(`${serverUrl}/api/v1/auth/current-user`, {
+                        method: 'GET',
+                        headers: headersReq
+                    });
+                    let res = await req.json();
+                    console.log("rest", res);
+                    if (res.success) {
+                        setCurrentUser(res.user);
+                    }
+                }
+            }
+            setLoading(false);
+        }
+        verifyUser();
     }, []);
 
     const value = {
         currentUser,
-        login,
         signup,
         logout,
+        login,
         // resetPassword,
         // updateEmail,
         // updatePassword
