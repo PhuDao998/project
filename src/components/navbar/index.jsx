@@ -16,8 +16,8 @@ export default function NavbarConponent() {
     const navigate = useNavigate();
     const { currentUser, logout } = useAuth();
     const handleSignOut = async () => {
-        await logout();
         navigate("/login");
+        await logout();
     };
     const handleShowSideBar = (e) => {
         const homeContainer = e.target.closest('.home_container');

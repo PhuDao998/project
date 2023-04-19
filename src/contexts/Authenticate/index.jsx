@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Cookies from 'universal-cookie';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = React.createContext();
 
@@ -46,6 +47,7 @@ export function AuthProvider({ children }) {
     }
 
     async function logout() {
+        setLoading(true)
         await fetch(`${serverUrl}/api/v1/auth/logout`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -57,6 +59,7 @@ export function AuthProvider({ children }) {
         cookies.remove('refreshToken');
         cookies.remove('accessToken');
         setCurrentUser(null);
+        setLoading(false)
     }
 
     // function resetPassword(email) {
@@ -81,7 +84,6 @@ export function AuthProvider({ children }) {
                     if (accessToken) {
                         headersReq.accessToken = `${HEADER_AUTHORIZATION_PREFIX} ${accessToken}`;
                     }
-                    console.log("headersReq", headersReq);
                     let req = await fetch(`${serverUrl}/api/v1/auth/current-user`, {
                         method: 'GET',
                         headers: headersReq

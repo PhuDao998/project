@@ -7,13 +7,15 @@ import { Navigate } from "react-router-dom";
 
 export default function HomePage() {
     const { currentUser } = useAuth();
-    console.log("currentUser",currentUser)
+    console.log("currentUser", currentUser);
     return (
         <div className="home_container">
-            {currentUser ? null : <Navigate to="/login" replace={true} />}
-            <Navbar />
-            <Sidebar />
-            <Outlet />
+            {currentUser ?
+                <>
+                    <Navbar />
+                    <Sidebar />
+                    <Outlet />
+                </> : <Navigate to="/login" replace={true} />}
         </div>
     );
 }

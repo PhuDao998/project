@@ -1,10 +1,11 @@
 
 import '../../styles/login.css';
 import React, { useState } from 'react';
-import {handleChangeInput, handleChangeEmail, handleChangePassword, handleChangeInputRequired, handleValidate} from '../../helper/formControl'
+import { handleChangeInput, handleChangeEmail, handleChangePassword, handleChangeInputRequired, handleValidate } from '../../helper/formControl';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from "../../contexts/Authenticate";
 import LoadingIcon from '../../helper/Loading_icon';
+import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 
 
 export default function CreateAcount() {
@@ -34,13 +35,13 @@ export default function CreateAcount() {
         }
     });
     const [loadingButton, setLoadingButton] = useState(false);
-   
+
     const handleSubmitFormLogin = async (e) => {
         e.preventDefault();
-        if (!formInfo.password.help_text && !formInfo.password.warning 
-            && !formInfo.email.help_text && !formInfo.email.warning 
-            && !formInfo.first_name.warning 
-            && handleValidate(formInfo,setFormInfo)) {
+        if (!formInfo.password.help_text && !formInfo.password.warning
+            && !formInfo.email.help_text && !formInfo.email.warning
+            && !formInfo.first_name.warning
+            && handleValidate(formInfo, setFormInfo)) {
 
             setLoadingButton(true);
             await login(formInfo.email.value, formInfo.password.value);
@@ -57,15 +58,15 @@ export default function CreateAcount() {
                 </div>
                 <div className="form_field_container mt-4">
                     <div className="form_field__item mt-3">
-                        <label htmlFor="email">First name</label>
-                        <input value={formInfo.first_name.value} onChange={(e) => handleChangeInputRequired(e, formInfo, setFormInfo, 'first_name')} type="text" name='email' id='email' className="form_field__input" placeholder='Enter your name' />
+                        <label htmlFor="first_name">First name</label>
+                        <input value={formInfo.first_name.value} onChange={(e) => handleChangeInputRequired(e, formInfo, setFormInfo, 'first_name')} type="text" className="form_field__input" placeholder='Enter your name' />
                         <span className="warning_input">
                             {formInfo.first_name.warning}
                         </span>
                     </div>
                     <div className="form_field__item no_required mt-3">
-                        <label htmlFor="email">Last name</label>
-                        <input value={formInfo.last_name.value} onChange={(e) => handleChangeInput(e, formInfo, setFormInfo, 'last_name')} type="text" name='email' id='email' className="form_field__input" placeholder='Enter your password' />
+                        <label htmlFor="last_name">Last name</label>
+                        <input value={formInfo.last_name.value} onChange={(e) => handleChangeInput(e, formInfo, setFormInfo, 'last_name')} type="text" className="form_field__input" placeholder='Enter your password' />
                     </div>
                     <div className="form_field__item mt-3">
                         <label htmlFor="email">Your email</label>
@@ -86,6 +87,14 @@ export default function CreateAcount() {
                         <span className="help_text_input">
                             {formInfo.password.help_text}
                         </span>
+                    </div>
+                    <div className="form_field__item no_required mt-3">
+                        <label htmlFor="last_name">Roles</label>
+                        <FormGroup>
+                            <FormControlLabel size="small" required disabled control={<Checkbox defaultChecked />} label="User" />
+                            <FormControlLabel size="small" control={<Checkbox />} label="Admin" />
+                            <FormControlLabel size="small" disabled control={<Checkbox />} label="Moderator" />
+                        </FormGroup>
                     </div>
                 </div>
                 <div className="action_container mt-6">
