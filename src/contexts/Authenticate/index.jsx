@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import Cookies from 'universal-cookie';
-import { useNavigate } from 'react-router-dom';
+import fetchApi from "../Fetch";
 
 const AuthContext = React.createContext();
 
@@ -10,7 +10,6 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const cookies = new Cookies();
-    const HEADER_AUTHORIZATION_PREFIX = "Airpot";
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
     const serverUrl = process.env.REACT_APP_SERVER_DOMAIN;
@@ -47,7 +46,7 @@ export function AuthProvider({ children }) {
     }
 
     async function logout() {
-        setLoading(true)
+        setLoading(true);
         await fetch(`${serverUrl}/api/v1/auth/logout`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -59,7 +58,7 @@ export function AuthProvider({ children }) {
         cookies.remove('refreshToken');
         cookies.remove('accessToken');
         setCurrentUser(null);
-        setLoading(false)
+        setLoading(false);
     }
 
     // function resetPassword(email) {
@@ -77,23 +76,11 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         async function verifyUser() {
             if (!currentUser) {
-                const accessToken = cookies.get('accessToken');
-                const refreshToken = cookies.get('refreshToken');
-                if (refreshToken) {
-                    let headersReq = { 'refreshToken': `${HEADER_AUTHORIZATION_PREFIX} ${refreshToken}` };
-                    if (accessToken) {
-                        headersReq.accessToken = `${HEADER_AUTHORIZATION_PREFIX} ${accessToken}`;
-                    }
-                    let req = await fetch(`${serverUrl}/api/v1/auth/current-user`, {
-                        method: 'GET',
-                        headers: headersReq
-                    });
-                    let res = await req.json();
-                    console.log("rest", res);
-                    if (res.success) {
-                        setCurrentUser(res.user);
-                    }
-                }
+                let res = await fetchApi("/api/v1/auth/current-user", {
+                    method: 'GET'
+                });
+                console.log("rest", res);
+                setCurrentUser(res.user);
             }
             setLoading(false);
         }
